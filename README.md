@@ -61,12 +61,15 @@ Hook заблокує коміт і виведе:
 ![Gitleaks Scan](https://github.com/Stanley29/gitleaks-hook/actions/workflows/gitleaks.yml/badge.svg)
 
 📁 Структура
-``Code
+```
 .
 ├── .gitleaks.toml         # Конфігурація правил
 ├── pre-commit             # Hook-скрипт
 └── .github/
     └── workflows/
         └── gitleaks.yml   # CI/CD інтеграція
+		
+```
+
 📄 Ліцензія
 MIT — використовуй, змінюй, поширюй.
