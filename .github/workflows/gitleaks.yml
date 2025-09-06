@@ -1,4 +1,4 @@
-name: Gitleaks Secret Scan
+name: Gitleaks Scan
 
 on:
   push:
@@ -7,13 +7,17 @@ on:
     branches: [ master ]
 
 jobs:
-  gitleaks-scan:
+  scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
+          chmod +x gitleaks
+
       - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        with:
-          config-path: .gitleaks.toml
+        run: |
+          ./gitleaks detect --source . --no-git --redact --config .gitleaks.toml
